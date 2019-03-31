@@ -1,0 +1,10 @@
+import styled from 'styled-components';
+
+export default styled.a`
+	text-decoration: none;
+	cursor: pointer;
+	
+	 &:hover {
+	    text-decoration: none;
+	 }
+`;

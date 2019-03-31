@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test POST</title>
+</head>
+<body>
+<form action="http://localhost:3000/api/v1/events/" method="post">
+
+	<div>
+		Event name:
+		<input type="text" name="event_name">
+	</div>
+	<div>
+		Organization name:
+		<input type="text" name="organization_name" value="INTITA" readonly>
+	</div>
+	<div>
+		RoomBlock name:
+		<input type="text" name="room_name">
+	</div>
+	<div>
+		Speaker name:
+		<input type="text" name="speaker_name">
+	</div>
+	<div>
+		Event starts:
+		<input type="datetime-local" name="starts">
+	</div>
+	<div>
+		Event ends:
+		<input type="datetime-local" name="ends">
+	</div>
+	Comment:
+	<div>
+		<textarea name="comment"  cols="30" rows="10"></textarea>
+	</div>
+	<div><input type="submit" value="Submit"></div>
+</form>
+</body>
+</html>

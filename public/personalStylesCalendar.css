@@ -1,0 +1,32 @@
+
+span.rbc-btn-group:nth-of-type(1) {
+    display: none;
+}
+
+span.rbc-btn-group:nth-of-type(3) {
+    padding-top: 15px;
+    padding-bottom: 40px;
+    padding-left: 0;
+}
+
+.rbc-toolbar-label {
+    display: none;
+}
+
+button {
+    background: #1e7e34;
+    border-radius: 10%;
+    padding-left: 10px;
+}
+
+div.rbc-time-slot {
+    background-color:  #f8f9f9;
+}
+
+div.rbc-time-view {
+     background-color:  #f8f9f9;
+ }
+
+div.rbc-row {
+    background-color:  #f8f9f9;
+}
