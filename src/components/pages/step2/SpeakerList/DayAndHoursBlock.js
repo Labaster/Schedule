@@ -9,38 +9,14 @@ import SelectDay from "../../../common/styled/forms/select/SelectStyled";
 import ErrorModal from '../../ErrorModal.js';
 
 const days = [
-    {
-        value: '',
-        name: 'День'
-    },
-    {
-        value: 'Monday',
-        name: 'Пн'
-    },
-    {
-        value: 'Tuesday',
-        name: 'Вт'
-    },
-    {
-        value: 'Wednesday',
-        name: 'Ср'
-    },
-    {
-        value: 'Thursday',
-        name: 'Чт'
-    },
-    {
-        value: 'Friday',
-        name: 'Пт'
-    },
-    {
-        value: 'Saturday',
-        name: 'Сб'
-    },
-    {
-        value: 'Sunday',
-        name: 'Нд'
-    },
+    {value: '', name: 'День'},
+    {value: 'Monday', name: 'Пн'},
+    {value: 'Tuesday', name: 'Вт'},
+    {value: 'Wednesday', name: 'Ср'},
+    {value: 'Thursday', name: 'Чт'},
+    {value: 'Friday', name: 'Пт'},
+    {value: 'Saturday', name: 'Сб'},
+    {value: 'Sunday', name: 'Нд'},
 ];
 
 class DayAndHoursBlock extends Component {
@@ -58,11 +34,11 @@ class DayAndHoursBlock extends Component {
                 },
                 working_hours_from: {
                     isValid: true,
-                    label: 'години роботи викладача з'
+                    label: 'години роботи викладача з (формату hh:mm)'
                 },
                 working_hours_to: {
                     isValid: true,
-                    label: 'години роботи викладача по'
+                    label: 'години роботи викладача по (формату hh:mm)'
                 },
             },
         }
@@ -89,14 +65,15 @@ class DayAndHoursBlock extends Component {
 
     handleValidation = (speakerKey) => {
         const formComponentsLabels = {...this.state.formComponentsLabels};
+        const timeValidation = /^(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
 
         !this.state.day ?
             formComponentsLabels.day.isValid = false :
             formComponentsLabels.day.isValid = true;
-        !this.state.from ?
+        !timeValidation.test(this.state.from) ?
             formComponentsLabels.working_hours_from.isValid = false :
             formComponentsLabels.working_hours_from.isValid = true;
-        !this.state.to ?
+        !timeValidation.test(this.state.to) ?
             formComponentsLabels.working_hours_to.isValid = false :
             formComponentsLabels.working_hours_to.isValid = true;
 
@@ -116,13 +93,11 @@ class DayAndHoursBlock extends Component {
         });
         this.clearFields();
     };
-
     render() {
         const { speakerKey } = this.props;
         return (
             <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between mb-5">
-
-                    <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                     <LabelStyledBold>
                         Виберіть день тижня:
                     </LabelStyledBold>
@@ -196,7 +171,6 @@ class DayAndHoursBlock extends Component {
         )
     }
 }
-
 const mapStateToProps = (state, props) => {
     return {
         store: state,

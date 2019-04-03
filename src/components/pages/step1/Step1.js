@@ -8,6 +8,12 @@ import CalendarBlock from './CalendarBlock.js';
 import LessonLengthBlock from './LessonLengthBlock.js'
 import BreaksBlock from './BreaksBlock.js';
 import ButtonProceed from './ButtonProceed.js';
+import { selectScheduleType } from '../../../selectors/scheduleTypeSelector.js';
+import { selectOrganizationName } from '../../../selectors/organizationNameSelector.js';
+import { selectScheduleDuration } from '../../../selectors/scheduleDurationSelector.js';
+import { selectLessonDuration } from '../../../selectors/lessonDurationSelector.js';
+import { selectIntervalBreak } from '../../../selectors/intervalBreakSelector.js';
+
 
 class Step1 extends Component {
     constructor(props) {
@@ -117,11 +123,11 @@ class Step1 extends Component {
 
 const mapStateToProps = (state, props) => {
     return {
-        schedule_type_store: state.schedule_type,
-        organization_name_store: state.organization_name,
-        schedule_duration_store: state.schedule_duration,
-        lesson_duration_store: state.lesson_duration,
-        interval_break_store: state.interval_break,
+        schedule_type_store: selectScheduleType(state),
+        organization_name_store: selectOrganizationName(state),
+        schedule_duration_store: selectScheduleDuration(state),
+        lesson_duration_store: selectLessonDuration(state),
+        interval_break_store: selectIntervalBreak(state),
         store: state,
     }
 };

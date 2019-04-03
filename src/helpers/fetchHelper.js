@@ -1,7 +1,9 @@
 export async function getUserDetails() {
     try {
         const response = await fetch('http://localhost:3000/api/v1/getUser');
+        console.log(response);
         const responseJson = await response.json();
+        console.log(responseJson);
         return await responseJson;
     } catch (error) {
         console.error(error);

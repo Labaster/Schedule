@@ -7,6 +7,7 @@ import reducer from './reducers/';
 import { getUserDetails } from './helpers/fetchHelper'
 
 getUserDetails().then(user => {
+    console.log(user);
     const store = createStore(reducer);
     store.dispatch({
         type: 'ADD_USER',

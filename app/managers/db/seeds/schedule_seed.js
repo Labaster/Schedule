@@ -10,8 +10,8 @@ exports.seed = function(knex, Promise) {
             return knex('speakers').del(); })
         .then(() => {
             return knex('rooms').del(); })
-        .then(() => {
-            return knex('groupes').del(); })
+        // .then(() => {
+        //     return knex('groupes').del(); })
         .then(() => {
             return knex('schedule_duration').del(); })
         .then(() => {

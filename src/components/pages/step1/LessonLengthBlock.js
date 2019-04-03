@@ -15,7 +15,7 @@ class LessonLengthBlock extends Component {
                         className="mb-4"
                         type="text"
                         name="lesson_duration"
-                        placeholder="90(в хв)"
+                        placeholder="90(вказувати у хв)"
                         value={this.props.value}
                         onChange={this.props.handleSetLessonLength}
                     />

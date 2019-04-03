@@ -8,43 +8,15 @@ import ButtonRedMinus from '../../common/styled/buttons/ButtonRedMinus.js';
 import ErrorModal from '../ErrorModal.js';
 
 const hoursPerWeek= [
-        {
-            value: '',
-            name: '0'
-        },
-        {
-            value: '1',
-            name: '1'
-        },
-        {
-            value: '2',
-            name: '2'
-        },
-        {
-            value: '3',
-            name: '3'
-        },
-        {
-            value: '4',
-            name: '4'
-        },
-        {
-            value: '5',
-            name: '5'
-        },
-        {
-            value: '6',
-            name: '6'
-        },
-        {
-            value: '7',
-            name: '7'
-        },
-        {
-            value: '8',
-            name: '8'
-        }
-        ];
+        {value: '', name: '0'},
+        {value: '1', name: '1'},
+        {value: '2', name: '2'},
+        {value: '3', name: '3'},
+        {value: '4', name: '4'},
+        {value: '5', name: '5'},
+        {value: '6', name: '6'},
+        {value: '7', name: '7'},
+        {value: '8', name: '8'}];
 
 class SubjectsNamesAndHoursBlock extends Component {
     constructor(props) {
@@ -55,14 +27,8 @@ class SubjectsNamesAndHoursBlock extends Component {
             subject_name: '',
             subject_hours: '',
             formComponentsLabels: {
-                subject_name: {
-                    isValid: true,
-                    label: 'введіть назву предмету'
-                },
-                subject_hours: {
-                    isValid: true,
-                    label: 'кількість годин на тиждень'
-                },
+                subject_name: {isValid: true, label: 'введіть назву предмету'},
+                subject_hours: {isValid: true, label: 'кількість годин на тиждень'},
             },
         }
     }

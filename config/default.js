@@ -19,7 +19,7 @@ module.exports = {
             "facebook": {
                 "key": "503016890224155",
                 "secret": "f665494839fd3eade6fbf6ece877eced",
-                "callback": "/schedule",
+                "callback": "/loading",
             }
         },
     },

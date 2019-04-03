@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ButtonRedMinus from '../../../common/styled/buttons/ButtonRedMinus.js';
-import { connect } from "react-redux";
 
 class ShowDaysAndHours extends Component {
     constructor(props) {
@@ -19,11 +18,12 @@ class ShowDaysAndHours extends Component {
 
     render() {
         const { speakerKey } = this.props;
+        const { days_and_hours } = this.props;
         return (
-            (this.props.days_and_hours_store[speakerKey]) ? (
+            (days_and_hours) ? (
             <React.Fragment>
                 <ul>
-                    {this.props.days_and_hours_store[speakerKey].map( (dayObj, index) => {
+                    {days_and_hours.map( (dayObj, index) => {
                         return (
                             <li key={index}>
                                 <span>День: {dayObj.day} / </span>
@@ -49,11 +49,4 @@ class ShowDaysAndHours extends Component {
     }
 }
 
-const mapStateToProps = (state, props) => {
-    return {
-        days_and_hours_store: state.days_and_hours,
-        store: state,
-    }
-};
-
-export default connect(mapStateToProps)(ShowDaysAndHours);
+export default ShowDaysAndHours;

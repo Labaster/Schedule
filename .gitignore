@@ -39,7 +39,10 @@ jspm_packages
 
 stats.js
 vr.stats.js
+public/js/build/
+/build/
+/public/build/
 /criticalCss/
 /assets/
 /package-lock.json
-
+.env

@@ -10,6 +10,10 @@ import { dispatchData } from '../../../helpers/fetchHelper';
 import SpinnerBlock from './SpinnerBlock.js';
 import ErrorModal from '../ErrorModal.js';
 import validator from '../../../helpers/validation.js';
+import { selectSubjectsNamesAndHours } from '../../../selectors/subjectsNamesAndHours.js';
+import { selectRooms } from '../../../selectors/roomsSelector.js';
+
+
 
 class Step2 extends Component {
     constructor(props) {
@@ -21,42 +25,15 @@ class Step2 extends Component {
             errors: [],
             formComponentsLabels: {
                 serverErrors: true,
-                schedule_type: {
-                    isValid: true,
-                    label: 'тип розкладу'
-                },
-                organization_name: {
-                    isValid: true,
-                    label: 'назву організації'
-                },
-                schedule_duration: {
-                    isValid: true,
-                    label: 'термін дії розкладу(виберіть з календаря)'
-                },
-                lesson_duration: {
-                    isValid: true,
-                    label: 'тривалість одного заняття(вказувати в хв. наприклад 45)'
-                },
-                interval_break: {
-                    isValid: true,
-                    label: 'перерви між заняттями'
-                },
-                subjects: {
-                    isValid: true,
-                    label: 'назви предметів та їх кількість годин на тиждень'
-                },
-                from: {
-                    isValid: true,
-                    label: 'години роботи викладача з'
-                },
-                to: {
-                    isValid: true,
-                    label: 'години роботи викладача по'
-                },
-                rooms: {
-                    isValid: true,
-                    label: 'назви аудиторій'
-                },
+                schedule_type: {isValid: true, label: 'тип розкладу'},
+                organization_name: {isValid: true, label: 'назву організації'},
+                schedule_duration: {isValid: true, label: 'термін дії розкладу(виберіть з календаря)'},
+                lesson_duration: {isValid: true, label: 'тривалість одного заняття(вказувати в хв. наприклад 45)'},
+                interval_break: {isValid: true, label: 'перерви між заняттями'},
+                subjects: {isValid: true, label: 'назви предметів та їх кількість годин на тиждень'},
+                from: {isValid: true, label: 'години роботи викладача з'},
+                to: {isValid: true, label: 'години роботи викладача по'},
+                rooms: {isValid: true, label: 'назви аудиторій'},
             },
         };
     }
@@ -68,12 +45,10 @@ class Step2 extends Component {
     modalClose = () => this.setState({ modalShow: false });
 
     dispatchToServer = (dataObj) => {
-        // console.log(JSON.stringify(dataObj));
         dispatchData(dataObj).then(
             res => {
                 if (res.status !== 200) {
                     this.setState({ errors: JSON.parse(res.statusText) });
-                    // console.log(this.state.errors);
                     this.blockWindow(false);
                     this.setState({ formComponentsLabels: {
                         ...validator({...this.state.formComponentsLabels}, this.state.errors)
@@ -138,7 +113,6 @@ class Step2 extends Component {
     };
 
     render() {
-        // console.log(this.props.store);
         return (
             <InActiveWindowWrapper
                 show={this.state.blockPage}
@@ -152,7 +126,7 @@ class Step2 extends Component {
                             <div className="row">
                                 <SubjectsNamesAndHoursBlock
                                     blockPage={this.state.blockPage}
-                                    subjects={this.props.subjects_names_and_hours_store}
+                                    subjects={this.props.subjects_names_and_hours}
                                     retrieveSubjectData={this.retrieveSubjectData}
                                     removeSubject={this.removeSubject}
                                 />
@@ -166,7 +140,7 @@ class Step2 extends Component {
                             <div className="row">
                                 <RoomBlock
                                     blockPage={this.state.blockPage}
-                                    rooms={this.props.rooms_store}
+                                    rooms={this.props.rooms}
                                     retrieveRoomData={this.retrieveRoomData}
                                     removeRoom={this.removeRoom}
                                 />
@@ -192,11 +166,10 @@ class Step2 extends Component {
         );
     }
 }
-
 const mapStateToProps = (state, props) => {
     return {
-        subjects_names_and_hours_store: state.subjects_names_and_hours,
-        rooms_store: state.rooms,
+        subjects_names_and_hours: selectSubjectsNamesAndHours(state),
+        rooms: selectRooms(state),
         store: state,
     }
 };

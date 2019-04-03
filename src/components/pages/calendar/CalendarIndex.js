@@ -17,15 +17,14 @@ class CalendarIndex extends React.Component {
         this.clearInitData();
         this.setState({ isLoading: true });
         getInitData().then(initData => {
-            console.log(initData.data);
                 this.dispatchToStore(initData.data);
             })
-            // .then( (res) => {
-            // console.log(res);
-            // this.setState({
-            //     isLoading: false,
-            // });
-        // })
+            .then( (res) => {
+            console.log(res);
+            this.setState({
+                isLoading: false,
+            });
+        })
             .catch(error => {
             this.setState({ errors: error });
         });
@@ -46,8 +45,7 @@ class CalendarIndex extends React.Component {
     };
 
     render() {
-        // console.log(this.props.initData);
-        const { initData, isLoading } = this.state;
+        const { isLoading } = this.state;
         return (
             <div className="container">
                 <div className="row">
@@ -63,7 +61,7 @@ class CalendarIndex extends React.Component {
                         <h3>
                             { isLoading ?
                                 <p>Loading ...</p> :
-                                <p>{JSON.stringify(initData.data)}</p>
+                                <p>{JSON.stringify(this.props.initData)}</p>
                             }
                         </h3>
                     </div>

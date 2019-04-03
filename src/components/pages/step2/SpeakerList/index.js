@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
+import styled from 'styled-components';
 import { connect } from 'react-redux';
-import Speaker from './Speaker.js'
-import './speakerList.css'
-import { selectSpeakerName, selectSpeakers } from '../../../../selectors/speakerSelector.js';
+import Speaker from './SpeakerConnect.js'
+import { selectSpeakersKeys } from '../../../../selectors/speakerSelector.js';
+
+const SpeakerListWrap = styled.ul`
+    padding: 0;
+`;
+
+const SpeakerItemWrap = styled.li`
+     list-style: none;
+`;
 
 class SpeakerList extends Component {
 
@@ -14,29 +22,28 @@ class SpeakerList extends Component {
     };
 
     render() {
-        // console.log(this.props.store);
-        const speakerManager = Object.keys(selectSpeakers(this.props.store)).map((speakerKey) =>
-            <li key = {speakerKey} className="article-list__li">
-                <Speaker
-                    blockPage={this.props.blockPage}
-                    key={speakerKey}
-                    speakerKey={speakerKey}
-                    speaker = {selectSpeakerName(this.props.store, speakerKey)}
-                    removeSpeaker={this.removeSpeaker}
-                />
-            </li>
-        );
+        const { speakersKeys } = this.props;
         return (
-            <ul style={{padding: "0"}}>
-                {speakerManager}
-            </ul>
+            <SpeakerListWrap>
+                {
+                  speakersKeys.map((speakerKey) => (
+                    <SpeakerItemWrap key = {speakerKey}>
+                      <Speaker
+                        blockPage={this.props.blockPage}
+                        speakerKey={speakerKey}
+                        removeSpeaker={this.removeSpeaker}
+                      />
+                    </SpeakerItemWrap>
+                  ))
+                }
+            </SpeakerListWrap>
         )
     }
 }
 
 const mapStateToProps = (state, props) => {
     return {
-        store: state,
+        speakersKeys: selectSpeakersKeys(state),
     }
 };
 

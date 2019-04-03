@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import DayAndHoursBlock from './DayAndHoursBlock.js';
-import ShowDaysAndHours from './ShowDaysAndHours.js';
+import ShowDaysAndHours from './ShowDaysAndHoursConnect.js';
 import ButtonRedMinus from '../../../common/styled/buttons/ButtonRedMinus.js';
-import SpeakerList from "../TeacherAndWorkingHoursBlock";
 
 class Speaker extends Component {
     constructor(props) {

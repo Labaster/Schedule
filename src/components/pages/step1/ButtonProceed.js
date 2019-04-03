@@ -28,7 +28,7 @@ class ButtonProceed extends Component {
                 },
                 lesson_duration: {
                     isValid: true,
-                    label: 'тривалість одного заняття'
+                    label: 'тривалість одного заняття(наприклад 120)'
                 },
                 interval_break: {
                     isValid: true,
@@ -42,23 +42,20 @@ class ButtonProceed extends Component {
         let canProceed = true;
         const { validation } = this.props;
         const formComponentsLabels = {...this.state.formComponentsLabels};
+        const lessonDurationValidator = /^[0-9]{1,3}$/;
 
         !validation.interval_break ?
             formComponentsLabels.interval_break.isValid = false :
             formComponentsLabels.interval_break.isValid = true;
-
         !validation.schedule_type ?
             formComponentsLabels.schedule_type.isValid = false :
             formComponentsLabels.schedule_type.isValid = true;
-
         !validation.organization_name ?
             formComponentsLabels.organization_name.isValid = false :
             formComponentsLabels.organization_name.isValid = true;
-
-        !validation.lesson_duration ?
+        !lessonDurationValidator.test(validation.lesson_duration) ?
             formComponentsLabels.lesson_duration.isValid = false :
             formComponentsLabels.lesson_duration.isValid = true;
-
         !Object.keys( validation.schedule_duration) ?
             formComponentsLabels.schedule_duration.isValid = false :
             formComponentsLabels.schedule_duration.isValid = true;

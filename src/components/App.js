@@ -12,7 +12,7 @@ function AuthenticatedRoute({component: Component, authenticated, ...rest}) {
     return (
         <Router
             {...rest}
-            render={(props) => authenticated === true
+            render = {(props) => authenticated === true
                 ? <Component {...props} {...rest} />
                 : <Redirect to={{pathname: '/', state: {from: props.location}}} />} />
     )
@@ -29,10 +29,13 @@ class App extends Component {
                 <Layout>
                     <ul>
                         <li>
-                            <Link to="">Home</Link>
+                            <a href="/">Home</a>
                         </li>
                         <li>
                             <Link to="/schedule">Calendar</Link>
+                        </li>
+                        <li>
+                            <Link to="/schedule/schedule_grid">Grid</Link>
                         </li>
                         <li>
                             <Link to="/schedule/creating/step_1">step_1</Link>
@@ -49,7 +52,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-        // console.log(state);
         if(state.user) {
             return {
                 Component: App,
