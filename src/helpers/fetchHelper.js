@@ -1,15 +1,12 @@
 export async function getUserDetails() {
     try {
         const response = await fetch('http://localhost:3000/api/v1/getUser');
-        console.log(response);
         const responseJson = await response.json();
-        console.log(responseJson);
         return await responseJson;
     } catch (error) {
         console.error(error);
     }
 }
-
 /*
 dispatching data*****************************************************************
  */
@@ -29,7 +26,7 @@ export async function dispatchData(data) {
         );
         return await response;
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
@@ -48,10 +45,9 @@ export async function getInitData() {
 EVENTS ***********************************************************************************
  */
 export async function getEvents(id) {
-
     try {
         if(!id) {
-            const response = await fetch('http://localhost:3000/api/v1/events/getEvents');
+            const response = await fetch('http://localhost:3000/api/v1/showEvent');
             const responseJson = await response.json();
             return await responseJson;
         }
@@ -64,16 +60,15 @@ export async function getEvents(id) {
 }
 
 export async function createEvent(newEvent) {
-    console.log("fetch", JSON.stringify(newEvent));
-    if(!newEvent) {return await "An object is empty!"}
+    if(!newEvent) {return "An object is empty!"}
     try {
-        const response =  await fetch('http://localhost:3000/api/v1/events/createEvent',
+        const response =  await fetch('http://localhost:3000/api/v1/createNewEvent',
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
-                json: JSON.stringify(newEvent),
+                body: JSON.stringify(newEvent),
             }
             );
         return await response.json();
@@ -89,7 +84,7 @@ export async function updateEvent(event) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(event)
             }
@@ -108,7 +103,7 @@ export async function deleteEvent(id) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 }
             }
         );
@@ -145,7 +140,7 @@ export async function createSpeaker(newSpeaker) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(newSpeaker),
             }
@@ -163,7 +158,7 @@ export async function updateSpeaker(speaker) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(speaker)
             }
@@ -182,7 +177,7 @@ export async function deleteSpeaker(id) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 }
             }
         );
@@ -219,7 +214,7 @@ export async function createGroup(newGroup) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(newGroup),
             }
@@ -237,7 +232,7 @@ export async function updateGroup(group) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(group)
             }
@@ -256,7 +251,7 @@ export async function deleteGroup(id) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 }
             }
         );
@@ -293,7 +288,7 @@ export async function createCompany(newCompany) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(newCompany),
             }
@@ -311,7 +306,7 @@ export async function updateCompany(company) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(company)
             }
@@ -330,7 +325,7 @@ export async function deleteCompany(id) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 }
             }
         );
@@ -367,7 +362,7 @@ export async function createRoom(newRoom) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(newRoom),
             }
@@ -385,7 +380,7 @@ export async function updateRoom(room) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 },
                 body: JSON.stringify(room)
             }
@@ -404,7 +399,7 @@ export async function deleteRoom(id) {
             {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'Content-Type': 'application/json; charset=UTF-8',
                 }
             }
         );

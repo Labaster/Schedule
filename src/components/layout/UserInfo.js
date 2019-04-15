@@ -35,12 +35,12 @@ class UserInfo extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        first_name: state.user.first_name,
-        last_name: state.user.last_name,
-        id: state.user.id,
-        avatar: state.user.picture.data.url,
-    }
+        return {
+            first_name: state.user.first_name,
+            last_name: state.user.last_name,
+            id: state.user.id,
+            avatar: state.user.picture.data.url,
+        }
 };
 
 export default connect(mapStateToProps)(UserInfo);

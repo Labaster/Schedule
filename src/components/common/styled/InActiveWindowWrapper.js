@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default styled.div`
-    ${props => props.show ?
+    ${ props => props.show ?
     `
     background: #000;
     opacity: 0.7;

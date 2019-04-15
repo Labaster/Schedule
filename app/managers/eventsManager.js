@@ -26,6 +26,7 @@ module.exports = {
 
     // Add new id record to DB
     setNewEvent: function setNewEvent(params) {
+        console.log('params',params);
         return knex('events')
             .insert({...params});
     },

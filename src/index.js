@@ -7,18 +7,16 @@ import reducer from './reducers/';
 import { getUserDetails } from './helpers/fetchHelper'
 
 getUserDetails().then(user => {
-    console.log(user);
     const store = createStore(reducer);
     store.dispatch({
         type: 'ADD_USER',
         payload: user,
     });
-
-    render(
-        <Provider store={store}>
-            <App/>
-        </Provider>,
-        document.getElementById('root'));
+        render(
+            <Provider store={store}>
+                <App/>
+            </Provider>,
+            document.getElementById('root'));
 });
 
 

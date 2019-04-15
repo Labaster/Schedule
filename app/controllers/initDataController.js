@@ -1,4 +1,4 @@
-const myDb = require('../managers/scheduleManager');
+const myDb = require('../managers/newScheduleManager');
 const setCookies = require('../helpers/cookiesHelper');
 const validator = require('node-input-validator');
 
@@ -26,7 +26,6 @@ async function createInitData(ctx) {
 	setCookies(ctx);
 	const obj = await ctx.request.body;
 	let errors = [];
-
 	try {
 		const validData = new validator( obj, validatorObj);
 		const matched = await validData.check();
@@ -76,21 +75,19 @@ async function createInitData(ctx) {
 async function getInitData(ctx) {
 	setCookies(ctx);
     try {
-		const initData = await myDb.getInitData(ctx.query);
-		ctx.status = 200;
-		return ctx.body = {
-				status: 'success',
-				data: initData
-		};
-	} catch (err) {
+		const initData = await myDb.getInitData(ctx.query.id);
+        ctx.status = 200;
+        return ctx.body = {
+            data: initData
+        }
+    } catch (err) {
 		ctx.status = 400;
 		return ctx.body = {
 			status: 'error',
 			message: err.message || 'Sorry, an error has occurred.'
-		};
+		}
 	}
 }
-
 
 module.exports = {
 	createInitData, getInitData

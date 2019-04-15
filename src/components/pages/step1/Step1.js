@@ -13,7 +13,7 @@ import { selectOrganizationName } from '../../../selectors/organizationNameSelec
 import { selectScheduleDuration } from '../../../selectors/scheduleDurationSelector.js';
 import { selectLessonDuration } from '../../../selectors/lessonDurationSelector.js';
 import { selectIntervalBreak } from '../../../selectors/intervalBreakSelector.js';
-
+import CalendarStyledWrapper from '../../common/styled/calendar/CalendarStyledWrapper.js';
 
 class Step1 extends Component {
     constructor(props) {
@@ -97,11 +97,13 @@ class Step1 extends Component {
                                         value={this.props.organization_name_store}
                                         handleSetOrganizationName={this.handleSetOrganizationName}
                                     />
+                                    <CalendarStyledWrapper>
                                     <CalendarBlock
                                         dateRangePicker={this.state.dateRangePicker.selection}
                                         elementWidth={this.elementWidth}
                                         handleRangeChange={this.handleRangeChange}
                                     />
+                                    </CalendarStyledWrapper>
                                     <LessonLengthBlock
                                         value={this.props.lesson_duration_store}
                                         handleSetLessonLength={this.handleSetLessonLength}

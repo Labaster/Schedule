@@ -4,8 +4,10 @@ const { getSpeakers, createSpeaker, updateSpeaker, deleteSpeaker} = require('../
 const { getGroups, createGroup, updateGroup, deleteGroup} = require('../controllers/groupsController');
 const { getCompanies, createCompany, updateCompany, deleteCompany} = require('../controllers/organizationsController');
 const { getRooms, createRoom, updateRoom, deleteRoom} = require('../controllers/roomsController');
-
 const { createInitData, getInitData } = require('../controllers/initDataController');
+const { getSubjects, createSubject, updateSubject, deleteSubject } = require('../controllers/subjectsController');
+const { getSchedules, createSchedule, updateSchedule, deleteSchedule } = require('../controllers/scheduleController');
+const { createNewEvent, getEventData } = require('../controllers/newEventController');
 
 module.exports = function (router) {
     router
@@ -35,7 +37,20 @@ module.exports = function (router) {
         .post(`/api/v1/rooms/createRoom`, createRoom)
         .post(`/api/v1/rooms/updateRoom/:id`, updateRoom)
         .post(`/api/v1/rooms/deleteRoom/:id`, deleteRoom)
+        //subjects
+        .get(`/api/v1/subjects/getSubjects/:id?`, getSubjects)
+        .post(`/api/v1/subjects/createSubject`, createSubject)
+        .post(`/api/v1/subjects/updateSubject/:id`, updateSubject)
+        .post(`/api/v1/subjects/deleteSubject/:id`, deleteSubject)
+        //schedule
+        .get(`/api/v1/subjects/getSchedules/:id?`, getSchedules)
+        .post(`/api/v1/subjects/createSchedule`, createSchedule)
+        .post(`/api/v1/subjects/updateSchedule/:id`, updateSchedule)
+        .post(`/api/v1/subjects/deleteSchedule/:id`, deleteSchedule)
         //data from steps 1-2
         .post(`/api/v1/createInitData`, createInitData)
         .get(`/api/v1/getInitData`, getInitData)
+        //data from form
+        .post('/api/v1/createNewEvent', createNewEvent)
+        .get('/api/v1/showEvent', getEventData)
 };

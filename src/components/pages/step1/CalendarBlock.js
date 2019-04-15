@@ -14,7 +14,7 @@ class CalendarBlock extends Component {
 
         this.state = {
             show_calendar: false,
-            calendar_Width: 0,
+            calendar_Width: 200,
         }
     }
 

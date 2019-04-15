@@ -26,7 +26,6 @@ async function loadingPageAction(ctx){
         await ctx.cookies.set('access_token', ctx.query.access_token, {httpOnly: false});
     }
     ctx.status = 302;
-    await ctx.render('loading');
     await ctx.redirect('/schedule');
 }
 
@@ -44,4 +43,10 @@ async function errorPageAction(ctx) {
     await ctx.render('errorPage', viewVariables);
 }
 
-module.exports = {errorPageAction, homePageAction, loadingPageAction, schedulePageAction};
+async function logOut(ctx){
+    ctx.cookies.set('access_token', null);
+    ctx.status = 302;
+    ctx.redirect('/');
+}
+
+module.exports = {errorPageAction, homePageAction, loadingPageAction, schedulePageAction, logOut};

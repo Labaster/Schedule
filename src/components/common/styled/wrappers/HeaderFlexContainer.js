@@ -5,7 +5,7 @@ export default styled.div`
 	flex-flow: row wrap;
 	align-items: center;
 	justify-content: start;
-	width: 100vw;
+	width: 100%;
 	min-height: 79px;
   	padding: 14px 50px;
   	color: white;

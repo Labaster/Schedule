@@ -3,6 +3,10 @@ export const selectEvents =  ( store ) => {
     return store.events;
 };
 
-export const selectEvent =  ( store, eventKey ) => {
+export const selectEventById =  ( store, eventId ) => {
     return selectEvents(store)[eventKey];
+};
+
+export const selectEventValues =  ( store ) => {
+    return Object.values(selectEvents(store));
 };

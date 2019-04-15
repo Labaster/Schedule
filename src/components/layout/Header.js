@@ -14,18 +14,13 @@ import HeaderLink from "../common/styled/links/HeaderLink";
 import HeaderHiddenContainer from "../common/styled/wrappers/HeaderHiddenContainer";
 import HeaderHiddenItem from "../common/styled/wrappers/HeaderHiddenItem";
 import HeaderLogOutIcon from "../common/styled/images/HeaderLogOutIcon";
-import Cookies from 'universal-cookie';
-import {addDays} from "date-fns";
-
-const cookies = new Cookies();
-
 
 class Header extends Component{
     constructor(props) {
         super(props);
         this.state = {props};
-        console.log(this.state);
     }
+
 
 	 showHiddenContainer = () => {
 		const menu = document.getElementById("hiddenContainer");
@@ -39,7 +34,6 @@ class Header extends Component{
             type: 'REMOVE_USER',
             payload: undefined
         });
-        cookies.set('access_token', '', { path: '*' });
     };
 
 	render() {
@@ -88,7 +82,7 @@ class Header extends Component{
 						< UserInfo />
 
 						{/*Log-out icon*/}
-						<a href="/" onClick={this.logOut}>
+						<a href="/logout" onClick={this.logOut}>
 							<HeaderLogOutIcon />
 						</a>
 					</HeaderHiddenItem>
@@ -102,7 +96,6 @@ class Header extends Component{
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
     return state;
 };
 

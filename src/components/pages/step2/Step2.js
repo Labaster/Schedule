@@ -13,8 +13,6 @@ import validator from '../../../helpers/validation.js';
 import { selectSubjectsNamesAndHours } from '../../../selectors/subjectsNamesAndHours.js';
 import { selectRooms } from '../../../selectors/roomsSelector.js';
 
-
-
 class Step2 extends Component {
     constructor(props) {
         super(props);

@@ -10,7 +10,16 @@ import days_and_hours from './daysAndHoursReducer';
 import events from './eventsReducer';
 import user from './userReducer';
 import rooms from './roomReducer';
-import initData from './initDataReducer';
+import subjectsEvent from './subjectsEventReducer';
+import speakersEvent from './speakersEventReducer';
+import roomsEvent from './roomsEventReducer';
+import organizationsEvent from './organizationsEventReducer';
+import lessonAndBreakDurationEvent from './lessonAndBreakDurationEventReducer';
+import scheduleCreateEvent from './scheduleCreateEventReducer';
+import dayForEvent from './dayForEventReducer';
+import descriptionEvent from './descriptionReducer';
+import eventHelper from './eventHelperReducer';
+
 
 export default combineReducers({
     schedule_type,
@@ -24,5 +33,13 @@ export default combineReducers({
     events,
     user,
     rooms,
-    initData,
+    speakersEvent,
+    subjectsEvent,
+    roomsEvent,
+    organizationsEvent,
+    lessonAndBreakDurationEvent,
+    scheduleCreateEvent,
+    dayForEvent,
+    descriptionEvent,
+    eventHelper,
 });

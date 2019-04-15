@@ -9,7 +9,7 @@ class Layout extends Component {
 	render() {
 		return (
 			<div>
-				<Header />
+				<Header className='position-sticky' />
 				{this.props.children}
 			</div>
 		)

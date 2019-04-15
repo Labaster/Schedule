@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import ButtonModal from '../common/styled/buttons/ButtonModal';
 
 class ErrorModal extends Component {
     render() {
@@ -39,7 +40,7 @@ class ErrorModal extends Component {
                     }
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={this.props.onHide}>Закрити</Button>
+                    <ButtonModal onClick={this.props.onHide}>Закрити</ButtonModal>
                 </Modal.Footer>
             </Modal>
         );

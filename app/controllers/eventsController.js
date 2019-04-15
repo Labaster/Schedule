@@ -38,6 +38,7 @@ async function createEvent(ctx) {
     setCookies(ctx);
     try {
         const event = await myDb.setNewEvent(ctx.request.body);
+
         if (event.length) {
             ctx.status = 201;
             ctx.body = {

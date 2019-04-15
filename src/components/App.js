@@ -1,21 +1,22 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import Layout from './layout/Layout';
 import Routes from "./Routes";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 function AuthenticatedRoute({component: Component, authenticated, ...rest}) {
-    // console.log(rest);
-    // console.log(Component);
-    // console.log(authenticated);
-    return (
-        <Router
-            {...rest}
-            render = {(props) => authenticated === true
-                ? <Component {...props} {...rest} />
-                : <Redirect to={{pathname: '/', state: {from: props.location}}} />} />
-    )
+    if(authenticated){
+        return (
+            <Router
+                {...rest}
+                render = {
+                    (props) => <Component {...props} {...rest} />
+                    }/>
+        )
+    } else {
+        window.location.href = '/';
+    }
 }
 
 class App extends Component {
@@ -27,15 +28,19 @@ class App extends Component {
         return (
             <AuthenticatedRoute authenticated={this.props.authenticated}>
                 <Layout>
+                    <Routes/>
                     <ul>
                         <li>
                             <a href="/">Home</a>
                         </li>
                         <li>
-                            <Link to="/schedule">Calendar</Link>
+                            <Link to="/scheduleDay">Grid Day</Link>
                         </li>
                         <li>
-                            <Link to="/schedule/schedule_grid">Grid</Link>
+                            <Link to="/scheduleWeek">Grid Week</Link>
+                        </li>
+                        <li>
+                            <Link to="/scheduleMonth">Grid Month</Link>
                         </li>
                         <li>
                             <Link to="/schedule/creating/step_1">step_1</Link>
@@ -44,7 +49,6 @@ class App extends Component {
                             <Link to="/schedule/creating/step_2">step_2</Link>
                         </li>
                     </ul>
-                    <Routes/>
                 </Layout>
             </AuthenticatedRoute>
         );
@@ -52,7 +56,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-        if(state.user) {
+        if(!state.user.error) {
             return {
                 Component: App,
                 currentUser: state.user,

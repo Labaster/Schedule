@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import ButtonRedMinus from '../../../common/styled/buttons/ButtonRedMinus.js';
 
 class ShowDaysAndHours extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        }
-    }
-
     removeDay = (indexObj) => {
         this.props.dispatch({
             type: 'DELETE_DAY',

@@ -1,6 +1,8 @@
 exports.seed = function(knex, Promise) {
     return knex.raw('SET foreign_key_checks = 0;')
         .then(() => {
+            return knex('schedule_types').del(); })
+        .then(() => {
             return knex('organizations').del() })
         .then(() => {
             return knex('events_duration').del() })
@@ -13,13 +15,13 @@ exports.seed = function(knex, Promise) {
         // .then(() => {
         //     return knex('groupes').del(); })
         .then(() => {
-            return knex('schedule_duration').del(); })
+            return knex('schedule').del(); })
         .then(() => {
             return knex('subjects').del(); })
         .then(() => {
             return knex('events').del(); })
         .then(() => {
-            return knex('schedule_types').del(); })
+            return knex('events_speakers_id').del(); })
 
         // .then(() => {
         //     return knex('organizations').insert([
